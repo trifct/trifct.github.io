@@ -180,7 +180,7 @@ $$
 平衡要求，
 
 $$
-\Delta_{tr} G_{平衡} = \Delta_{tr} H_{平衡} - T_{tr} \Delta_{tr} S_{平衡} = 0, \qquad (\frac{\partial G}{\partial \xi})_{T,p(平衡)} = \mu_2 - \mu_1 = 0, \quad \mu_1 = \mu_2
+(\frac{\partial G}{\partial \xi})_{T,p(平衡)} = \Delta_{tr} G_{平衡} = \Delta_{tr} H_{平衡} - T_{tr} \Delta_{tr} S_{平衡} = 0, \qquad \Delta_{tr} G_{平衡} = \mu_2 - \mu_1 = 0, \mu_1 = \mu_2
 $$
 
 我们主要研究标准态下的情况，实际考虑：
@@ -211,3 +211,130 @@ $$
 
 ### 纯物质的相图
 
+对任意相，$\mu = f(p, T)$
+
+(1) 单相区
+
+(2) 两相平衡线 ($\mu_1 = \mu_2$)
+
+(3) 三相点  ($\mu_1 = \mu_2 = \mu_3$)
+
+(4) 临界与超临界 (气-液)
+
+$$
+\Delta E_{分子} = 0 = \Delta_{临界} H, \quad d_{气} = d_{液}, \quad \eta_{临界} = 0
+$$
+
+其中 $\eta$ 为黏度 (参考化工原理及实验 Chapter 1)
+
+### 相区的相对位置
+
+(1) 气态总是在凝聚态下方 (高压条件下凝聚态化学势更高)
+
+(2) 固态总是在液态的左方
+
+下面我们证明一下 (1):
+
+在 ($T$, $p^*$) 点，
+
+$$
+\Delta_{tr} G = \mu_2 - \mu_1 = 0, \quad (\frac{\partial (\Delta_{tr} G)}{\partial p})_T < 0
+$$
+
+$$
+dG_m = -S_m dT + V_m dp, (\frac{\partial (\Delta_{tr} G)}{\partial p})_T = \Delta_{tr} V_{m(气-凝)} < 0
+$$
+
+因此，给定 $T$，$p > p^*$，凝聚相稳定；$p < p^*$，气相稳定。
+
+### 线的斜率
+
+在相平衡线上，$\Delta_{tr} G_{平衡} = d\mu_1 - d\mu_2 = 0$
+
+$$
+\left\{
+    \begin{aligned}
+    d\mu_1 = -S_{m(1)}dT + V_{m(1)}dp \\
+    d\mu_2 = -S_{m(2)}dT + V_{m(2)}dp \\
+    \end{aligned}
+\right.
+$$
+
+$$
+\begin{aligned}
+&-(S_{m(1)} - S_{m(2)})dT + (V_{m(1)} - V_{m(2)})dp = 0 \\
+&-\Delta_{tr} S dT + \Delta_{tr} Vdp = 0
+\end{aligned}
+$$
+
+$$
+\therefore \frac{dp}{dT} = \frac{\Delta_{tr} S}{\Delta_{tr} V} = \frac{\Delta_{tr} H}{T_{tr}\Delta_{tr} V}
+$$
+
+上式称为克拉贝龙方程，对于相平衡体系成立。
+
+(A) 气 $\to$ 凝
+
+$$
+\Delta_{tr} V_{气-凝} = -V_{m(气)} = -\frac{R T_{tr}}{p^*}
+$$
+
+$$
+\frac{dp}{dT} = \frac{p^* |\Delta_{tr} H|}{R T_{tr}^2}
+$$
+
+上式称为克劳修斯-克拉贝龙方程。
+
+(B) 固 $\to$ 液
+
+$\Delta_{tr} S \to 比较大$，$\Delta_{tr} V \to 0^+$ (水特殊，$\Delta_{tr} V \to 0^-$)
+
+$$
+\frac{dp}{dT} = \frac{\Delta_{tr} S}{\Delta_{tr} V} \to \infty
+$$
+
+### 相交点
+
+(A) 标准 b.p.
+
+对 $150 \text{K} \sim 450 \text{K}$
+
+$$
+T_{b.p.} = \frac{E_{m, 分子/液}}{R - \Delta_{tr} S_{(b.p.)}} = \frac{E_{m, 分子/液}^{\circ}}{\frac{1 + F_{转}}{2} R - 84.5}
+$$
+
+$$
+\therefore T_{b.p.} = -10.0 E_{m, 分子/液}^{\circ}
+$$
+
+对氢键分子，84.5 一项偏离。
+
+(B) 固 $\to$ 液
+
+$$
+T_{m.p.} = \frac{E_{m, 分子/液} - E_{m, 分子/固}}{\Delta_{tr} S_{(类振动)} + \Delta_{tr} S_{(定向)} + \Delta_{tr} S_{(内振动)}}
+$$
+
+值得注意的是，不可能存在大范围规律。
+
+- 对单原子/近球对称分子，分母只有第一项；
+
+- 对刚性多原子，分母有第一、第二项；
+
+- 对柔性分子，分母三项均有。
+
+### 凝聚态的化学势
+
+相平衡条件下，
+
+$$
+\mu_{凝} = \mu_{气(饱和)} = \mu^{\circ} + RT \ln{p^*}
+$$
+
+## 液态的量子统计热力学
+
+### 摩尔热能
+
+$$
+Q_{m(液)} = Q_{m(气)} + \frac{3 + F_{转}}{2}RT
+$$

@@ -303,7 +303,7 @@ $$
 Trouton 规则：某些物质的标准蒸发焓与标准沸点温度之比为一个常数
 
 $$
-S_{m, 分子/液}^\circ = -Delta_{tr}S_{m(bp)}^\circ = -Delta_{tr}H_{m(bp)}^\circ / T_{bp} = 常数
+S_{m, 分子/液}^\circ = -\Delta_{tr}S_{m(bp)}^\circ = -\Delta_{tr}H_{m(bp)}^\circ / T_{bp} = 常数
 $$
 
 通过对 CRC 中收录的分子作图，近似拟合得到线性直线，斜率为 98.5(J/(K$\cdot$mol))
