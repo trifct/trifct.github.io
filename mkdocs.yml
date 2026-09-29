@@ -79,6 +79,10 @@ nav:
       - 物理化学 I :
         - notes/物理化学/物理化学 1/index.md
         - Chapter 1: notes/物理化学/物理化学 1/Chapter 1.md
+      - 物理化学 II :
+        - notes/物理化学/物理化学 2/index.md
+        - Chapter 7: notes/物理化学/物理化学 2/Chapter 7.md
+        - Chapter 8: notes/物理化学/物理化学 2/Chapter 8.md
     
     - 化学实验报告:
       - notes/化学实验/index.md
@@ -88,6 +92,11 @@ nav:
     - 常微分方程(1 学分):
       - notes/常微分方程(1 学分)/index.md
       - Chapter 1: notes/常微分方程(1 学分)/Chapter 1.md
+      - Chapter 2: notes/常微分方程(1 学分)/Chapter 2.md
+
+    - 化工原理及实验:
+      - notes/化工原理及实验/index.md
+      - Chapter 1: notes/化工原理及实验/Chapter 1.md
 
     - 其他:
       - notes/其他/index.md

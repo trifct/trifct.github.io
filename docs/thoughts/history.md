@@ -4,6 +4,21 @@ title: 施工记录
   <section class="site-history__entry">
     <div class="site-history__marker" aria-hidden="true"></div>
     <header class="site-history__header">
+      <time datetime="2026-09-xx">2026.09</time>
+      <h2>v1.3 · 开学了喵</h2>
+    </header>
+    <div class="site-history__description">
+      <p>
+      目前 ode 笔记上传了第一章 </br>
+      新学期开坑：物理化学 II、III，化工原理及实验 </br>
+      希望我手速够快跟得上讲课 </br>
+      </p>
+    </div>
+  </section>
+
+  <section class="site-history__entry">
+    <div class="site-history__marker" aria-hidden="true"></div>
+    <header class="site-history__header">
       <time datetime="2026-07-xx">2026.07 ~ 2026.08</time>
       <h2>v1.2 · 暑假摸鱼一阶段</h2>
     </header>

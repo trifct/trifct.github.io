@@ -15,6 +15,15 @@
   counter-reset: h2-counter;
 }
 
+/* 施工记录区域不参与自动编号 */
+.md-typeset .site-history h2::before,
+.md-typeset .site-history h3::before,
+.md-typeset .site-history h4::before,
+.md-typeset .site-history h5::before,
+.md-typeset .site-history h6::before {
+  content: none !important;
+}
+
 .md-typeset h2 {
   counter-reset: h3-counter;
 }
@@ -290,7 +299,7 @@
 /* -- 时间线圆点 -- */
 .site-history__marker {
   position: absolute;
-  left: -43px;          /* 50px padding - 15px line + offset */
+  left: -33.5px;        /* 让圆点左边缘对齐竖线中心（padding 50px - 16.5px） */
   top: 1.5rem;
   width: 12px;
   height: 12px;
@@ -298,6 +307,7 @@
   border: 3px solid #0288d1;
   border-radius: 50%;
   z-index: 2;
+  transform: translateX(-50%);  /* 再回退自身宽度的一半，精确居中 */
 }
 
 /* -- 头部：日期 + 版本标题 -- */
