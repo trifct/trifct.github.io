@@ -388,13 +388,25 @@ $$
 ### 体积摩尔比热容
 
 $$
-\Gamma_V = \frac{C_{p, m}}{V_m} \qquad \Gamma_{V(气)} = \frac{1}{m} \Gamma_{V(液)}
+\Gamma_V = \frac{C_{p, m}}{V_m} \qquad \Gamma_{V(气)} = \frac{1}{1000} \Gamma_{V(液)}
 $$
 
 ### 体积
 
 $$
-V_m = (\frac{\partial G_m}{\partial p})_{T, n} = 
+V_m = (\frac{\partial G_m}{\partial p})_{T, n} = (\frac{\partial H_m}{\partial p})_{T, n} - T (\frac{\partial S}{\partial p})_{T, n}
+$$
+
+对于气体，
+
+$$
+(\frac{\partial H_m}{\partial p})_{T, n} \quad \Longrightarrow \quad V_m = - T (\frac{\partial S}{\partial p})_{T, n}
+$$
+
+对于液体，
+
+$$
+(\frac{\partial S}{\partial p})_{T, n} = -(\frac{\partial V_m}{\partial T})_{p, n} \to 0 \quad \Longrightarrow \quad V_m = (\frac{\partial U_m}{\partial p})_{T, n}
 $$
 
 ## 固体的量子统计热力学
