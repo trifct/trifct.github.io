@@ -10,6 +10,11 @@
   if (!cover || !content) return;
 
   const root = document.documentElement;
+
+  /* 标记"JS 可用"：.section-content 的隐藏/淡入只在有这个 class 时生效，
+   * 这样脚本没跑起来时首页第二屏也照常显示（详见 extra.css 第 6.4 节）。 */
+  root.classList.add("home-js");
+
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;

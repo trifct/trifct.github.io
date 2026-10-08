@@ -677,12 +677,19 @@ html:has(#top.page-section) .section-content {
   /* 顶部留出固定 Header + 标签栏的高度，避免内容被遮住 */
   padding: calc(var(--home-overlay-h, 4.8rem) + 1rem) 1.4rem 2.4rem;
   background: var(--md-default-bg-color, #ffffff);
+}
+
+/* 只有在 JS 确认可用时（html.home-js，由 home-snap.js 一开头加上）才把这一屏
+ * 藏起来，等滚动到位再让 IntersectionObserver 加 .is-visible 淡入。
+ * 这样若 JS 被禁用 / 脚本加载失败，这一屏至少是正常显示的，
+ * 不会留下一片空白（首页"看起来坏了"的元凶）。 */
+html.home-js:has(#top.page-section) .section-content {
   opacity: 0;
   transform: translateY(24px);
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
 }
 
-html:has(#top.page-section) .section-content.is-visible {
+html.home-js:has(#top.page-section) .section-content.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
