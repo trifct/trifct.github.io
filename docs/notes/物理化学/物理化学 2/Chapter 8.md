@@ -338,3 +338,75 @@ $$
 $$
 Q_{m(液)} = Q_{m(气)} + \frac{3 + F_{转}}{2}RT
 $$
+
+$$
+C_{p, m(液)} \approx C_{V, m(液)} = C_{V, m(气)} + \frac{3 + F_{转}}{2}R
+$$
+
+### 定压摩尔热容
+
+近似有：
+
+$$
+H_m = U_m + pV_m(\to 0) = U(0)_m + Q_m
+$$
+
+$$
+C_{p, m} = C_{V, m} + \frac{V_m T \alpha_p^2}{\pi_T} \qquad \alpha_p = \frac{1}{V_m}(\frac{\partial V_m}{\partial T})_p \qquad \pi_T = -(\frac{\partial p}{\partial V_m})_T
+$$
+
+$$
+\Longrightarrow d(\ln V_m) = \alpha_p dT - \pi_T dp
+$$
+
+因此有：
+
+$$
+C_{p, m(液)} = C_{V, m(气)} + \frac{3 + F_{转}}{2}R + \frac{V_m T \alpha_p^2}{\pi_T}
+$$
+
+考虑氢键：
+
+以水为例，设氢键能级等距，能级差为 $\Delta \varepsilon$，第 $i$ 个能级表示有 $4-i$ 个氢键，简并度为 $g_i$，则有：
+
+$$
+\mathscr{f}_{氢键} = \sum_{i=0}^{4}{g_i e^{\frac{-i\Delta \varepsilon}{kT}}}
+$$
+
+由中子散射确定，$\overline{N}_{氢键} = 3.6$，则有：
+
+$$
+3.6 = \frac{\sum_{i=0}^{4}{(4-i)g_i e^{\frac{-i\Delta \varepsilon}{kT}}}}{\sum_{i=0}^{4}{g_i e^{\frac{-i\Delta \varepsilon}{kT}}}}
+$$
+
+解得：$\Delta \varepsilon = 5.3 \text{J/mol}$，$C_{V, m(氢键)} = 21.3 \text{J/(mol·K)}$
+
+$$
+C_{p, m(液)} = C_{V, m(气)} + C_{V, m(氢键)} + \frac{3 + F_{转}}{2}R + \frac{V_m T \alpha_p^2}{\pi_T}
+$$
+
+### 体积摩尔比热容
+
+$$
+\Gamma_V = \frac{C_{p, m}}{V_m} \qquad \Gamma_{V(气)} = \frac{1}{m} \Gamma_{V(液)}
+$$
+
+### 体积
+
+$$
+V_m = (\frac{\partial G_m}{\partial p})_{T, n} = 
+$$
+
+## 固体的量子统计热力学
+
+### 摩尔热能、摩尔内能与爱因斯坦关系式
+
+$$
+U_{m(固)} = Q_{m(固)} + U(0)_{m(固)} = \sum_{j=1}^{3N_A}{Q_{m(j)}} + U(0)_{m(固)}
+$$
+
+$$
+C_{V, m(固)} = (\frac{\partial U_{m(固)}}{\partial T})_{V, n} = \sum_{j=1}^{3N_A}{\frac{k (h \nu_j / k T)^2}{(e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k T})^2}} = 3R (\frac{h \nu_j / k T}{e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k T}})^2
+$$
+
+上式称为 **爱因斯坦方程** 。
