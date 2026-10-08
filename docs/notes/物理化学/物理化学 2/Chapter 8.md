@@ -410,3 +410,4 @@ C_{V, m(固)} = (\frac{\partial U_{m(固)}}{\partial T})_{V, n} = \sum_{j=1}^{3N
 $$
 
 上式称为 **爱因斯坦方程** 。
+
