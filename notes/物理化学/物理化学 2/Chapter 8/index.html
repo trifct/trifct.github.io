@@ -2973,11 +2973,19 @@ C_{p, m(液)} = C_{V, m(气)} + C_{V, m(氢键)} + \frac{3 + F_{转}}{2}R + \fra
 \]</div>
 <h3 id="_21">体积摩尔比热容</h3>
 <div class="arithmatex">\[
-\Gamma_V = \frac{C_{p, m}}{V_m} \qquad \Gamma_{V(气)} = \frac{1}{m} \Gamma_{V(液)}
+\Gamma_V = \frac{C_{p, m}}{V_m} \qquad \Gamma_{V(气)} = \frac{1}{1000} \Gamma_{V(液)}
 \]</div>
 <h3 id="_22">体积</h3>
 <div class="arithmatex">\[
-V_m = (\frac{\partial G_m}{\partial p})_{T, n} = 
+V_m = (\frac{\partial G_m}{\partial p})_{T, n} = (\frac{\partial H_m}{\partial p})_{T, n} - T (\frac{\partial S}{\partial p})_{T, n}
+\]</div>
+<p>对于气体，</p>
+<div class="arithmatex">\[
+(\frac{\partial H_m}{\partial p})_{T, n} \quad \Longrightarrow \quad V_m = - T (\frac{\partial S}{\partial p})_{T, n}
+\]</div>
+<p>对于液体，</p>
+<div class="arithmatex">\[
+(\frac{\partial S}{\partial p})_{T, n} = -(\frac{\partial V_m}{\partial T})_{p, n} \to 0 \quad \Longrightarrow \quad V_m = (\frac{\partial U_m}{\partial p})_{T, n}
 \]</div>
 <h2 id="_23">固体的量子统计热力学</h2>
 <h3 id="_24">摩尔热能、摩尔内能与爱因斯坦关系式</h3>
@@ -3002,7 +3010,7 @@ C_{p, m(固)} = 3R (\frac{h \nu_j / k T}{e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k 
 <div class="arithmatex">\[
 T \to 0, \qquad S_m \to 0, \qquad S_{m(固)} = \int_0^T{\frac{C_{p, m(固)}}{T}}dT
 \]</div>
-<div class='document-dates-plugin-wrapper document-dates-bottom'><div class='document-dates-plugin' locale=''><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-09-29'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-09-29T08:29:06+08:00'>2026-09-29</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-08'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-08T09:36:43+08:00'>2026-10-08</time></span></div><div class='dd-right'><span class='material-icons' data-icon='doc_author'></span><div class='author-group'><div class='avatar-wrapper' data-name='Trifct' data-tippy-content data-tippy-raw='<a href="mailto:1241525393@qq.com">Trifct</a>'><span class='avatar-text'></span><img class='avatar' data-src='' data-email='1241525393@qq.com' /></div></div></div></div></div>
+<div class='document-dates-plugin-wrapper document-dates-bottom'><div class='document-dates-plugin' locale=''><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-09-29'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-09-29T08:29:06+08:00'>2026-09-29</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-08'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-08T20:11:41+08:00'>2026-10-08</time></span></div><div class='dd-right'><span class='material-icons' data-icon='doc_author'></span><div class='author-group'><div class='avatar-wrapper' data-name='Trifct' data-tippy-content data-tippy-raw='<a href="mailto:1241525393@qq.com">Trifct</a>'><span class='avatar-text'></span><img class='avatar' data-src='' data-email='1241525393@qq.com' /></div></div></div></div></div>
 
 
 
