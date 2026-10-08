@@ -264,88 +264,602 @@
  * ============================================================ */
 
 .site-history {
+  --sh-rail-x: 0.9rem;   /* 时间轴竖线相对 .site-history 左边缘的位置 */
+  --sh-gap: 1.8rem;      /* 竖线到卡片的水平间距 */
+  --sh-marker-top: 1.55rem; /* 圆点距卡片顶部的距离 */
+  --sh-marker-r: 6.5px;     /* 圆点半径（含边框），用于对齐竖线起点 */
   position: relative;
-  padding-left: 50px;
-  margin: 2rem 0;
+  margin: 2.2rem 0;
+  padding-left: calc(var(--sh-rail-x) + var(--sh-gap));
 }
 
-/* -- 左侧竖线 -- */
+/* -- 左侧竖线：从主题色渐变淡出 -- */
 .site-history::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 15px;
-  width: 3px;
-  background: #e0e0e0;
+  /* 起点落在第一个圆点的圆心，避免圆点上方露出一小截竖线 */
+  top: calc(var(--sh-marker-top) + var(--sh-marker-r));
+  bottom: 1.3rem;
+  left: var(--sh-rail-x);
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--md-primary-fg-color) 0%,
+    var(--md-default-fg-color--lightest) 100%
+  );
   border-radius: 2px;
+  transform: translateX(-50%);
 }
 
-/* -- 每个版本条目 -- */
-.site-history__entry {
+/* -- 每个版本条目 ------------------------------------------------
+ * 描边和左侧色条都用 box-shadow 而不是 border。
+ * 原因：绝对定位的圆点 left 是以"内边距框"为基准的，
+ * 一旦用 border，内边距框会被整体挤出去一个边框宽度，
+ * 圆点就会比竖线偏右（缩放屏上还会被设备像素吸附成小数）。
+ * box-shadow 不影响布局，基准就始终等于卡片边缘。 */
+.site-history .site-history__entry {
   position: relative;
-  margin-bottom: 2.5rem;
-  padding: 1.2rem 1.5rem;
-  background: var(--md-default-bg-color--light, #f5f5f8);
-  border-radius: 10px;
-  border: 1px solid var(--md-default-bg-color--lighter, #ececf1);
-  transition: box-shadow 0.2s;
+  margin-bottom: 1.5rem;
+  padding: 1.1rem 1.3rem 1.2rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--md-default-bg-color--light);
+  box-shadow:
+    0 0 0 1px var(--md-default-fg-color--lightest),  /* 卡片描边 */
+    inset 3px 0 0 var(--md-primary-fg-color),         /* 左侧主题色条 */
+    0 1px 2px rgba(0, 0, 0, 0.04);                    /* 轻微投影 */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.site-history__entry:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+.site-history .site-history__entry:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px var(--md-default-fg-color--lightest),
+    inset 3px 0 0 var(--md-primary-fg-color),
+    0 10px 26px rgba(0, 0, 0, 0.12);
 }
 
 /* -- 时间线圆点 -- */
-.site-history__marker {
+.site-history .site-history__marker {
   position: absolute;
-  left: -33.5px;        /* 让圆点左边缘对齐竖线中心（padding 50px - 16.5px） */
-  top: 1.5rem;
-  width: 12px;
-  height: 12px;
-  background: #fff;
-  border: 3px solid #0288d1;
+  top: var(--sh-marker-top);
+  left: calc(-1 * var(--sh-gap));
+  width: 13px;
+  height: 13px;
+  background: var(--md-default-bg-color);
+  border: 2.5px solid var(--md-primary-fg-color);
   border-radius: 50%;
+  /* 用背景色描一圈"光晕"，把竖线在圆点处断开 */
+  box-shadow: 0 0 0 4px var(--md-default-bg-color);
   z-index: 2;
-  transform: translateX(-50%);  /* 再回退自身宽度的一半，精确居中 */
+  transform: translateX(-50%);
 }
 
-/* -- 头部：日期 + 版本标题 -- */
-.site-history__header {
+/* 最新一条：圆点实心 */
+.site-history .site-history__entry--latest .site-history__marker {
+  background: var(--md-primary-fg-color);
+}
+
+/* 最新一条：卡片淡淡染一层主题色 */
+.site-history .site-history__entry--latest {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 6%, var(--md-default-bg-color--light));
+}
+
+/* -- 头部：日期 / 版本 / 标题 -- */
+.site-history .site-history__header {
+  margin-bottom: 0.6rem;
+}
+
+.site-history .site-history__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
   margin-bottom: 0.5rem;
 }
 
-.site-history__header time {
-  font-size: 0.8rem;
-  color: var(--md-default-fg-color--light, #888);
-  display: block;
-  margin-bottom: 0.2rem;
+.site-history .site-history__date {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: var(--md-default-bg-color--lighter);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-.site-history__header h2 {
+.site-history .site-history__version {
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  /* 不支持 color-mix 时退回到上一行的中性底色 */
+  background: var(--md-default-bg-color--lighter);
+  background: color-mix(in srgb, var(--md-primary-fg-color) 14%, transparent);
+  color: var(--md-primary-fg-color);
+  font-family: var(--md-code-font, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-history .site-history__badge {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: var(--md-primary-fg-color);
+  color: var(--md-default-bg-color);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.site-history .site-history__title {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+  color: var(--md-default-fg-color);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 /* -- 描述文字 -- */
-.site-history__description {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--md-default-fg-color--light, #666);
+.site-history .site-history__description {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.88rem;
+  line-height: 1.7;
 }
 
-.site-history__description p {
-  margin: 0.3rem 0;
+.site-history .site-history__description p {
+  margin: 0;
 }
 
 /* -- 截图展示 -- */
-.site-history__gallery {
-  margin-top: 0.8rem;
+.site-history .site-history__gallery {
+  margin: 0.95rem 0 0;
 }
 
-.site-history__gallery img {
+/* 图片按原生尺寸居中，外层 a 负责圆角与阴影 */
+.site-history .site-history__gallery a {
+  display: block;
+  width: fit-content;
   max-width: 100%;
-  border-radius: 6px;
-  border: 1px solid var(--md-default-bg-color--lighter, #e0e0e8);
+  margin: 0 auto;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-history .site-history__gallery a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.site-history .site-history__gallery img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.site-history .site-history__gallery figcaption {
+  margin-top: 0.55rem;
+  color: var(--md-default-fg-color--lighter);
+  font-size: 0.76rem;
+  text-align: center;
+}
+
+/* -- 窄屏收窄时间轴 -- */
+@media (max-width: 600px) {
+  .site-history {
+    --sh-rail-x: 0.7rem;
+    --sh-gap: 1.2rem;
+  }
+
+  .site-history .site-history__entry {
+    padding: 1rem 1rem 1.05rem;
+  }
+}
+
+/* ============================================================
+ *  6. 首页整屏滚动吸附 (scroll-snap)
+ *
+ *  只作用于首页：
+ *    - 首页内容里才有 .page-section，普通文档页没有，
+ *      所以以 .page-section 为根的选择器天然只影响首页；
+ *    - 少数需要覆盖 Material 容器的规则，用 html:has() 兜底限定范围。
+ *
+ *  原理（两层叠加）：
+ *    1. CSS scroll-snap  —— 结构 + 原生吸附（触屏 / 键盘 / 无 JS 时兜底）
+ *    2. JS wheel 接管     —— preventDefault + scrollIntoView 强制"一滚一屏"
+ * ============================================================ */
+
+/* ------------------------------------------------------------
+ *  6.1 破除 Material 默认居中容器，让首页铺满整屏
+ * ------------------------------------------------------------ */
+html:has(#top.page-section) {
+  overflow-x: hidden;
+  scroll-snap-type: y proximity; /* 原生吸附兜底 */
+  scroll-behavior: smooth;       /* 吸附 / 跳转带平滑动画 */
+}
+
+html:has(#top.page-section) body {
+  overflow-x: hidden;
+}
+
+html:has(#top.page-section) .md-container,
+html:has(#top.page-section) .md-main,
+html:has(#top.page-section) .md-main__inner,
+html:has(#top.page-section) .md-content,
+html:has(#top.page-section) .md-content__inner,
+html:has(#top.page-section) .md-typeset {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+/* 封面自带导航，隐藏回顶按钮与页脚 */
+html:has(#top.page-section) .md-top,
+html:has(#top.page-section) .md-footer {
+  display: none !important;
+}
+
+/* Material 会在正文容器顶部插入一个 8px 占位伪元素，首页需要去掉 */
+html:has(#top.page-section) .md-content__inner::before {
+  display: none !important;
+}
+
+/* Header / 标签栏固定在顶部，从文档流中脱出，让封面真正铺满一屏。
+ * （Material 9.7 把 .md-tabs 放在 .md-container 里、默认是 static，
+ *   不处理的话桌面端会额外占掉一行高度，封面就不是整屏了。） */
+html:has(#top.page-section) .md-header,
+html:has(#top.page-section) .md-tabs {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  z-index: 6;
+}
+
+html:has(#top.page-section) .md-header {
+  top: 0;
+}
+
+html:has(#top.page-section) .md-tabs {
+  top: var(--home-header-h, 2.4rem);
+}
+
+/* ------------------------------------------------------------
+ *  6.2 每一"屏"：整屏高 + 吸附点
+ * ------------------------------------------------------------ */
+html:has(#top.page-section) .page-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  scroll-snap-align: start;   /* 吸附到顶部 */
+  scroll-snap-stop: always;   /* 惯性滚动时不允许一滑跨屏 */
+  scroll-margin-top: 0;
+}
+
+/* 首页标题不参与 extra.css 顶部的全局自动编号 */
+html:has(#top.page-section) .page-section h1::before,
+html:has(#top.page-section) .page-section h2::before,
+html:has(#top.page-section) .page-section h3::before,
+html:has(#top.page-section) .page-section h4::before {
+  content: none !important;
+}
+
+/* ------------------------------------------------------------
+ *  6.3 封面屏
+ * ------------------------------------------------------------ */
+html:has(#top.page-section) .section-cover {
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(79, 195, 247, 0.35), transparent 55%),
+    radial-gradient(90% 80% at 85% 100%, rgba(77, 208, 225, 0.26), transparent 60%),
+    linear-gradient(160deg, #061713 0%, #0b2a2f 48%, #061713 100%);
+}
+
+html:has(#top.page-section) .cover-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(92%, 46rem);
+  padding: 0 1rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: cover-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+@keyframes cover-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html:has(#top.page-section) .cover-eyebrow {
+  margin: 0 0 1.1rem;
+  color: rgba(180, 233, 255, 0.9);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+html:has(#top.page-section) .cover-title {
+  margin: 0 0 1.1rem;
+  color: #fff;
+  font-size: clamp(1.9rem, 5vw, 3.3rem);
+  font-weight: 900;
+  line-height: 1.15;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}
+
+html:has(#top.page-section) .cover-subtitle {
+  max-width: 34rem;
+  margin: 0 0 2.6rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1rem;
+  line-height: 1.85;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+}
+
+html:has(#top.page-section) .cover-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 2.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.94), rgba(77, 208, 225, 0.9));
+  color: #05222b !important;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+html:has(#top.page-section) .cover-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+html:has(#top.page-section) .scroll-hint {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transform: translateX(-50%);
+  animation: cover-bounce 2s infinite;
+}
+
+html:has(#top.page-section) .scroll-hint:hover {
+  color: #fff;
+}
+
+@keyframes cover-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-9px); }
+  60% { transform: translateX(-50%) translateY(-4px); }
+}
+
+/* ------------------------------------------------------------
+ *  6.4 内容屏
+ * ------------------------------------------------------------ */
+html:has(#top.page-section) .section-content {
+  align-items: center;
+  justify-content: center;
+  /* 顶部留出固定 Header + 标签栏的高度，避免内容被遮住 */
+  padding: calc(var(--home-overlay-h, 4.8rem) + 1rem) 1.4rem 2.4rem;
+  background: var(--md-default-bg-color, #ffffff);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
+}
+
+html:has(#top.page-section) .section-content.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html:has(#top.page-section) .section-inner {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+html:has(#top.page-section) .section-eyebrow {
+  margin: 0 0 0.6rem;
+  color: var(--md-primary-fg-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+html:has(#top.page-section) .section-title {
+  margin: 0 0 1.2rem;
+  color: var(--md-default-fg-color);
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  line-height: 1.25;
+}
+
+/* 注意排除 .section-eyebrow，否则会被这条规则压过后面的强调色 */
+html:has(#top.page-section) .section-inner p:not(.section-eyebrow) {
+  color: var(--md-default-fg-color--light);
+  line-height: 1.9;
+}
+
+html:has(#top.page-section) .quick-links {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 2.2rem;
+}
+
+html:has(#top.page-section) .quick-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  color: var(--md-default-fg-color) !important;
+  text-decoration: none;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+html:has(#top.page-section) .quick-link:hover {
+  transform: translateX(4px);
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+html:has(#top.page-section) .quick-link > span:first-child {
+  flex: 0 0 auto;
+  width: 1.6rem;
+  color: var(--md-primary-fg-color);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+html:has(#top.page-section) .quick-link > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+html:has(#top.page-section) .quick-link strong {
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+html:has(#top.page-section) .quick-link small {
+  color: var(--md-default-fg-color--lighter);
+  font-size: 0.76rem;
+}
+
+/* ------------------------------------------------------------
+ *  6.5 右侧楼层导航（1F / B1）
+ * ------------------------------------------------------------ */
+html:has(#top.page-section) .floor-switcher {
+  position: fixed;
+  top: 50%;
+  right: clamp(14px, 3vw, 34px);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 0.8rem;
+  height: 7rem;
+  padding: 0.2rem 0;
+  transform: translateY(-50%);
+}
+
+html:has(#top.page-section) .floor-switcher::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  bottom: 0.55rem;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(140, 150, 160, 0.8) 18%, rgba(140, 150, 160, 0.8) 82%, transparent);
+  transform: translateX(-50%);
+}
+
+html:has(#top.page-section) .floor-switcher__item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 1px solid rgba(140, 150, 160, 0.9);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  color: transparent !important;
+  font-size: 0;
+  text-decoration: none;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+}
+
+html:has(#top.page-section) .floor-switcher__item::before {
+  content: "";
+  width: 0.24rem;
+  height: 0.24rem;
+  border-radius: 50%;
+  background: rgba(120, 132, 142, 0.95);
+  transition: background 0.28s ease;
+}
+
+/* 悬停 / 选中时的浮动标签 */
+html:has(#top.page-section) .floor-switcher__item::after {
+  content: attr(aria-label);
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(20, 26, 30, 0.78);
+  color: #fff;
+  font-size: 0.68rem;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(4px, -50%);
+  transition: opacity 0.24s ease, transform 0.24s ease;
+  pointer-events: none;
+}
+
+html:has(#top.page-section) .floor-switcher__item:hover,
+html:has(#top.page-section) .floor-switcher__item.is-active {
+  background: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+  transform: scale(1.18);
+}
+
+html:has(#top.page-section) .floor-switcher__item:hover::before,
+html:has(#top.page-section) .floor-switcher__item.is-active::before {
+  background: #fff;
+}
+
+html:has(#top.page-section) .floor-switcher__item:hover::after,
+html:has(#top.page-section) .floor-switcher__item.is-active::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+@media (max-width: 600px) {
+  html:has(#top.page-section) .section-content {
+    padding: calc(var(--home-overlay-h, 2.4rem) + 1rem) 1rem 2rem;
+  }
+
+  html:has(#top.page-section) .floor-switcher {
+    right: 10px;
+  }
 }

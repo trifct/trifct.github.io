@@ -83,6 +83,7 @@ nav:
         - notes/物理化学/物理化学 2/index.md
         - Chapter 7: notes/物理化学/物理化学 2/Chapter 7.md
         - Chapter 8: notes/物理化学/物理化学 2/Chapter 8.md
+        - Chapter 9: notes/物理化学/物理化学 2/Chapter 9.md
     
     - 化学实验报告:
       - notes/化学实验/index.md
@@ -149,3 +150,4 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/home-snap.js
