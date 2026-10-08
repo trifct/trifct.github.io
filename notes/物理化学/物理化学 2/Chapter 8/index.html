@@ -1585,6 +1585,67 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定压摩尔热容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        体积摩尔比热容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        体积
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固体的量子统计热力学
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="固体的量子统计热力学">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        摩尔热能、摩尔内能与爱因斯坦关系式
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2799,7 +2860,55 @@ T_{m.p.} = \frac{E_{m, 分子/液} - E_{m, 分子/固}}{\Delta_{tr} S_{(类振�
 <div class="arithmatex">\[
 Q_{m(液)} = Q_{m(气)} + \frac{3 + F_{转}}{2}RT
 \]</div>
-<div class='document-dates-plugin-wrapper document-dates-bottom'><div class='document-dates-plugin' locale=''><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-09-29'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-09-29T08:29:06+08:00'>2026-09-29</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-09-29'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-09-29T09:36:51+08:00'>2026-09-29</time></span></div><div class='dd-right'><span class='material-icons' data-icon='doc_author'></span><div class='author-group'><div class='avatar-wrapper' data-name='Trifct' data-tippy-content data-tippy-raw='<a href="mailto:1241525393@qq.com">Trifct</a>'><span class='avatar-text'></span><img class='avatar' data-src='' data-email='1241525393@qq.com' /></div></div></div></div></div>
+<div class="arithmatex">\[
+C_{p, m(液)} \approx C_{V, m(液)} = C_{V, m(气)} + \frac{3 + F_{转}}{2}R
+\]</div>
+<h3 id="_20">定压摩尔热容</h3>
+<p>近似有：</p>
+<div class="arithmatex">\[
+H_m = U_m + pV_m(\to 0) = U(0)_m + Q_m
+\]</div>
+<div class="arithmatex">\[
+C_{p, m} = C_{V, m} + \frac{V_m T \alpha_p^2}{\pi_T} \qquad \alpha_p = \frac{1}{V_m}(\frac{\partial V_m}{\partial T})_p \qquad \pi_T = -(\frac{\partial p}{\partial V_m})_T
+\]</div>
+<div class="arithmatex">\[
+\Longrightarrow d(\ln V_m) = \alpha_p dT - \pi_T dp
+\]</div>
+<p>因此有：</p>
+<div class="arithmatex">\[
+C_{p, m(液)} = C_{V, m(气)} + \frac{3 + F_{转}}{2}R + \frac{V_m T \alpha_p^2}{\pi_T}
+\]</div>
+<p>考虑氢键：</p>
+<p>以水为例，设氢键能级等距，能级差为 <span class="arithmatex">\(\Delta \varepsilon\)</span>，第 <span class="arithmatex">\(i\)</span> 个能级表示有 <span class="arithmatex">\(4-i\)</span> 个氢键，简并度为 <span class="arithmatex">\(g_i\)</span>，则有：</p>
+<div class="arithmatex">\[
+\mathscr{f}_{氢键} = \sum_{i=0}^{4}{g_i e^{\frac{-i\Delta \varepsilon}{kT}}}
+\]</div>
+<p>由中子散射确定，<span class="arithmatex">\(\overline{N}_{氢键} = 3.6\)</span>，则有：</p>
+<div class="arithmatex">\[
+3.6 = \frac{\sum_{i=0}^{4}{(4-i)g_i e^{\frac{-i\Delta \varepsilon}{kT}}}}{\sum_{i=0}^{4}{g_i e^{\frac{-i\Delta \varepsilon}{kT}}}}
+\]</div>
+<p>解得：<span class="arithmatex">\(\Delta \varepsilon = 5.3 \text{J/mol}\)</span>，<span class="arithmatex">\(C_{V, m(氢键)} = 21.3 \text{J/(mol·K)}\)</span></p>
+<div class="arithmatex">\[
+C_{p, m(液)} = C_{V, m(气)} + C_{V, m(氢键)} + \frac{3 + F_{转}}{2}R + \frac{V_m T \alpha_p^2}{\pi_T}
+\]</div>
+<h3 id="_21">体积摩尔比热容</h3>
+<div class="arithmatex">\[
+\Gamma_V = \frac{C_{p, m}}{V_m} \qquad \Gamma_{V(气)} = \frac{1}{m} \Gamma_{V(液)}
+\]</div>
+<h3 id="_22">体积</h3>
+<div class="arithmatex">\[
+V_m = (\frac{\partial G_m}{\partial p})_{T, n} = 
+\]</div>
+<h2 id="_23">固体的量子统计热力学</h2>
+<h3 id="_24">摩尔热能、摩尔内能与爱因斯坦关系式</h3>
+<div class="arithmatex">\[
+U_{m(固)} = Q_{m(固)} + U(0)_{m(固)} = \sum_{j=1}^{3N_A}{Q_{m(j)}} + U(0)_{m(固)}
+\]</div>
+<div class="arithmatex">\[
+C_{V, m(固)} = (\frac{\partial U_{m(固)}}{\partial T})_{V, n} = \sum_{j=1}^{3N_A}{\frac{k (h \nu_j / k T)^2}{(e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k T})^2}} = 3R (\frac{h \nu_j / k T}{e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k T}})^2
+\]</div>
+<p>上式称为 <strong>爱因斯坦方程</strong> 。</p>
+<div class='document-dates-plugin-wrapper document-dates-bottom'><div class='document-dates-plugin' locale=''><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-09-29'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-09-29T08:29:06+08:00'>2026-09-29</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-08'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-08T09:02:42+08:00'>2026-10-08</time></span></div><div class='dd-right'><span class='material-icons' data-icon='doc_author'></span><div class='author-group'><div class='avatar-wrapper' data-name='Trifct' data-tippy-content data-tippy-raw='<a href="mailto:1241525393@qq.com">Trifct</a>'><span class='avatar-text'></span><img class='avatar' data-src='' data-email='1241525393@qq.com' /></div></div></div></div></div>
 
 
 
