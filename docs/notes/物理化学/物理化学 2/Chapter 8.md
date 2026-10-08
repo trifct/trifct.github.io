@@ -411,3 +411,24 @@ $$
 
 上式称为 **爱因斯坦方程** 。
 
+### 定压摩尔热容
+
+$$
+C_{p, m(固)} = C_{V, m(固)} + (\frac{\partial U(0)_{m, 固}}{\partial T})_p = \sum_{j=1}^{3N_A}{\frac{k (h \nu_j / k T)^2}{(e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k T})^2}} + \frac{V_m T \alpha_p^2}{\pi_T}
+$$
+
+#### 单原子固体
+
+低频高温近似，对多数单原子金属和离子晶体成立，对力常数大的小原子误差大
+
+#### 共价分子（或基团）
+
+$$
+C_{p, m(固)} = 3R (\frac{h \nu_j / k T}{e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k T}})^2 + \sum_{j=1}^{3N_A}{\frac{k (h \nu_j / k T)^2}{(e^{h \nu_j / 2 k T}-e^{- h \nu_j / 2 k T})^2}} + (\frac{\partial U(0)_{m, 固}}{\partial T})_p
+$$
+
+### 摩尔熵
+
+$$
+T \to 0, \qquad S_m \to 0, \qquad S_{m(固)} = \int_0^T{\frac{C_{p, m(固)}}{T}}dT
+$$
