@@ -149,5 +149,7 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - javascripts/home-snap.js
+  # 注意：MathJax 本体（约 1MB 的 tex-mml-chtml.js）不再写在这里，
+  # 改由 javascripts/mathjax.js 按需注入 —— 只有页面里真的有公式时才下载，
+  # 否则它会拖慢首页且像本例这样把后面的 home-snap.js 一起卡住。
