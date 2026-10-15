@@ -304,6 +304,16 @@ $$
 $$
 \begin{aligned}
 \Delta_{混}U = \Delta_{混}H - p \Delta_{混}V &= - (\sum_i n_i RT^2 (\frac{d\ln \gamma_i}{dT})_{p,n} + \sum_i n_i RTp (\frac{d \ln \gamma_i}{dp})_{T,n})\\
-&= - (\sum_i n_i RT (\frac{d\ln \gamma_i}{d \ln T})_{p,n} + \sum_i n_i RT (\frac{d \ln \gamma_i}{d \ln p})_{T,n})
+&= - \sum_i n_i RT [(\frac{d\ln \gamma_i}{d \ln T})_{p,n} + (\frac{d \ln \gamma_i}{d \ln p})_{T,n}]
 \end{aligned}
+$$
+
+### 混合偏摩尔量
+
+$$
+\Delta_{混}H = \sum_i n_i ((^m H_i) - H_{m,i}) = \sum_i n_i \Delta_{混}H_i 
+$$
+
+$$
+\Rightarrow \Delta_{混}H_i = - RT^2 (\frac{d\ln \gamma_i}{dT})_{p,n}
 $$
