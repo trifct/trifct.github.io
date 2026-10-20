@@ -84,6 +84,7 @@ nav:
         - Chapter 7: notes/物理化学/物理化学 2/Chapter 7.md
         - Chapter 8: notes/物理化学/物理化学 2/Chapter 8.md
         - Chapter 9: notes/物理化学/物理化学 2/Chapter 9.md
+        - Chapter 10: notes/物理化学/物理化学 2/Chapter 10.md
     
     - 化学实验报告:
       - notes/化学实验/index.md
@@ -98,6 +99,7 @@ nav:
     - 化工原理及实验:
       - notes/化工原理及实验/index.md
       - Chapter 1: notes/化工原理及实验/Chapter 1.md
+      - Chapter 2: notes/化工原理及实验/Chapter 2.md
 
     - 其他:
       - notes/其他/index.md
