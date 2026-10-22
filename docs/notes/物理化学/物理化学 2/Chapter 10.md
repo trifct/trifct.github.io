@@ -116,3 +116,73 @@ $$
 ### 理想混合物的二组分液-固相图 T-z
 
 ![液固](../../../assets/img/notes/物理化学/物理化学 2/液固.png)
+
+## 固态溶质的溶解平衡
+
+### 溶解平衡的标度
+
+$$
+\text{NaCl}(\mathscr s) + \text{H}_2\text{O}(\mathscr l) \stackrel{T.p.}{\rightleftharpoons} \text{Na}^+(\mathscr{aq}) + \text{Cl}^-(\mathscr{aq})
+$$
+
+$$
+\text{C}_6\text{H}_{12}\text{O}_6(\mathscr s) + \text{H}_2\text{O}(\mathscr l) \stackrel{T.p.}{\rightleftharpoons} \text{溶液}
+$$
+
+平衡条件：
+
+$$
+\mu_{质} = \mu_{质}^* \qquad (\frac{\partial G}{\partial \xi_{质}})_{T,p,n_{剂}} = 0
+$$
+
+$$
+G = (n_{质}\mu_{质} + n_{剂}\mu_{剂}) + (n_{质}^*\mu_{质}^* + n_{剂}^*\mu_{剂}^*)
+$$
+
+$$
+\therefore (\frac{\partial G}{\partial \xi_{质}})_{T,p,n_{剂}} = \mu_{质} - \mu_{质}^* = 0 \qquad \mu_{质} = \mu_{质}^*
+$$
+
+### 溶解度定律
+
+$$
+\mu_{质} = \mu_{质}^* + RT\ln(\chi_{质}\gamma_{质})_{(饱和)} = \mu_{质}^*
+$$
+
+$$
+\Rightarrow (\chi_{质}\gamma_{质})_{(饱和)} = 1 \qquad \chi_{质,饱和} = \frac{1}{\gamma_{质,饱和}}
+$$
+
+### 固体溶于液体的溶解平衡的热力学
+
+$$
+RT\ln\gamma_i = \Delta_{混(非)}G_m \qquad \gamma_i = \exp{(\frac{\Delta_{混(非)}G_m}{RT})}
+$$
+
+$$
+\chi_{质,饱和} = \exp{(-\frac{\Delta_{混(非)}G_m}{RT})}
+$$
+
+$$
+\chi_{质,饱和} = \exp{[(-\frac{\Delta_{质(熔)}G_m}{RT})+(-\frac{\Delta_{液混(非)}G_{质}}{RT})]}
+$$
+
+### $\frac{\Delta_{液混(非)}G_{质}}{\Delta_{质(熔)}G_m} \to 0$ 的溶解度
+
+$$
+\Delta_{液混} H_{实} \to 0 \qquad \Delta_{质(熔)} H \approx 61kJ/mol
+$$
+
+$$
+\Delta_{液混(非)} S_{质} \to 0 \qquad \Delta_{质(熔)} S \approx 180J/(mol\cdot K)
+$$
+
+$$
+\chi_{质,饱和} = \exp{(-\frac{\Delta_{质(熔)}G_m}{RT})}
+$$
+
+### “溶质组装型”纳米簇溶液
+
+![溶质组装](../../../assets/img/notes/物理化学/物理化学 2/溶质组装.png)
+
+### “溶剂组装型”纳米簇溶液
