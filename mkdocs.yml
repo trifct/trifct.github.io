@@ -98,8 +98,11 @@ nav:
 
     - 化工原理及实验:
       - notes/化工原理及实验/index.md
-      - Chapter 1: notes/化工原理及实验/Chapter 1.md
-      - Chapter 2: notes/化工原理及实验/Chapter 2.md
+      - 流体:
+        - Chapter 1: notes/化工原理及实验/Chapter 1.md
+        - Chapter 2: notes/化工原理及实验/Chapter 2.md
+      - 传热:
+        - Chapter 5: notes/化工原理及实验/Chapter 5.md
 
     - 其他:
       - notes/其他/index.md
