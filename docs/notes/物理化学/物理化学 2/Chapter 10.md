@@ -186,3 +186,129 @@ $$
 ![溶质组装](../../../assets/img/notes/物理化学/物理化学 2/溶质组装.png)
 
 ### “溶剂组装型”纳米簇溶液
+
+## 流体溶质的溶解平衡
+
+### 气体溶质的溶解可逆过程动力学
+
+同样有：
+
+$$
+G = G_{纯态} + \Delta_{混}G
+$$
+
+$$
+(\frac{\partial G}{\partial \xi_{质}})_{T,p,n_{剂}} = \mu_{质,气} - \mu_{质,饱和} = 0
+$$
+
+$$
+\Rightarrow \mu_{质}^\circ + RT\ln p_{质} = \mu_{质}^* + RT\ln \alpha_{质} = (\mu_{质}^\circ + RT\ln p_{质}^*) + RT\ln \alpha_{质}
+$$
+
+$$
+\Rightarrow \ln(p_{质}/p_{质}^*) = \ln(\chi_{质(饱和)} \gamma_{质(饱和)}) \qquad \chi_{质(饱和)} = \frac{p_{质}}{p_{质}^* \gamma_{质(饱和)}}
+$$
+
+注意一般取 $p^{\circ} = 1\text{bar}$
+
+对于混合偏摩尔吉布斯自由能，有：
+
+$$
+\Delta_{混(理)}G + \Delta_{混(非)}G = 0
+$$
+
+$$
+\therefore \chi_{质(饱和)} = e^{-\Delta_{混(非)}G/RT} = e^{-\Delta_{质(混)}G/RT} e^{-\Delta_{液混(非)}G/RT}
+$$
+
+- 普遍地，$\Delta_{质(混)}S \ll 0$，气体溶解度一般不大
+
+- 若 $\Delta_{液混}H_{质} \ll 0$，溶解度较大
+
+- 一般情况，$p_{质}^* \gg p_{质}^\circ$
+
+### 液体溶质
+
+#### 无限混溶的情况
+
+$$
+\chi_{质} = \frac{p_{质}}{p_{质}^* \gamma_{质}}
+$$
+
+#### 不完全互溶
+
+取 A 相为组分 1 溶于组分 2，B 相为组分 2 溶于组分 1
+
+$$
+\mu_{i(A)} = \mu_{i(B)} \qquad \frac{\chi_{i(A)}}{\chi_{i(B)}} = \frac{\gamma_{i(B)}}{\gamma_{i(A)}}
+$$
+
+#### 极难互溶
+
+$$
+\limit_{x_{剂} \to 1} \alpha_{剂} = 1 \qquad \limit_{x_{剂} \to 1} \gamma_{剂} = 1
+$$
+
+## 活度系数
+
+### 流体溶质的活度系数
+
+#### 完全互溶的液体
+
+$$
+p_{质} = \alpha_{质} p_{质}^* \qquad \gamma_{质} = \frac{p_{质}}{p_{质}^* \chi_{质}}
+$$
+
+#### 部分互溶的液体
+
+同上右式
+
+#### 极难溶
+
+$$
+\gamma_{质} = \frac{1}{\chi_{质}}
+$$
+
+#### 气体溶质
+
+$$
+\gamma_{质} = \frac{p_{质}}{p_{质}^* \chi_{质}}
+$$
+
+### 固体溶质的活度系数
+
+#### 饱和溶液
+
+$$
+\gamma_{质} = \frac{1}{\chi_{质}}
+$$
+
+#### 非饱和溶液
+
+$$
+\sum_i \chi_i d(\ln \gamma_i) = 0 \qquad d(\ln \gamma_{质}) = - \frac{\chi_{剂}}{1-\chi_{剂}} d(\ln \gamma_{剂})
+$$
+
+$$
+\ln \gamma_{质} = \ln \gamma_{质(饱和)} - \int_{饱和}^{非饱和} \frac{\chi_{剂}}{1-\chi_{剂}} d(\ln \gamma_{剂}) = \ln \gamma_{质(饱和)} - \int_{饱和}^{非饱和} f(\ln \gamma_{剂}) d(\ln \gamma_{剂})
+$$
+
+#### 萃取与多组分体系活度系数
+
+至少有一种溶质在液 A 和液 B 中达到分配平衡：
+
+$$
+\mu_{i(A)} = \mu_{i(B)}
+$$
+
+$$
+\mu_i^* + RT\ln\alpha_{i(A)} = \mu_i^* + RT\ln\alpha_{i(B)}
+$$
+
+$$
+\alpha_{i(A)} = \alpha_{i(B)}
+$$
+
+$$
+1 \ne \left.\frac{[i]_{(A)}}{[i]_{(B)}}\right|_{aq} \equiv K_{\text{分配}} = \left.\frac{\gamma_{i(B)}}{\gamma_{i(A)}}\right|_{aq}
+$$
