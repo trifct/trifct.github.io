@@ -97,7 +97,7 @@ $$
         \mu_{r,饱和} = \mu^\circ + RT\ln p_{r}^* \\
     \end{aligned}
 \right.
-\Rightarrow p_{r}^* = p_{\infty}^* \exp{\left[\left(\frac{2\sigma V_m}{rRT}\right)\cdot\left(\frac{V_m}{RT}\left( \frac{\partial \sigma}{\partial r} \right)_{T,p}\right)\right]}
+\Rightarrow p_{r}^* = p_{\infty}^* \exp{\left[\left(\frac{2\sigma V_m}{rRT}\right)+\left(\frac{V_m}{RT}\left( \frac{\partial \sigma}{\partial r} \right)_{T,p}\right)\right]}
 $$
 
 ### 溶液中的纳米晶的溶解度
@@ -105,7 +105,7 @@ $$
 回忆第九章，$\alpha_{\infty}=1$
 
 $$
-\chi_{r,饱和} = \frac{1}{\gamma_{r,饱和}} \exp{\left[\left(\frac{2\sigma V_m}{rRT}\right)\cdot\left(\frac{V_m}{RT}\left( \frac{\partial \sigma}{\partial r} \right)_{T,p}\right)\right]}
+\chi_{r,饱和} = \frac{1}{\gamma_{r,饱和}} \exp{\left[\left(\frac{2\sigma V_m}{rRT}\right)+\left(\frac{V_m}{RT}\left( \frac{\partial \sigma}{\partial r} \right)_{T,p}\right)\right]}
 $$
 
 吉布斯、开尔文、奥斯瓦尔德：
