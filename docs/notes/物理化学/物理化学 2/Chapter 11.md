@@ -83,3 +83,141 @@ $$
 $$
 p_{内}-p_{外} = \frac{2F_{张力}}{r}
 $$
+
+### Young 方程
+
+$$
+F_{气-固} - F_{液-固} = F_{液-气} \cos \theta
+$$
+
+## 吉布斯方案
+
+### 吉布斯表面方程
+
+对于给定的 $T,\ p$，
+
+$$
+dG = \sum_i \mu_{i(\infty)} dn_i + \sum_j \sigma_j da_j -SdT + Vdp
+$$
+
+$$
+G = \sum_i \mu_{i(\infty)} n_i + \sum_j \sigma_j a_j
+$$
+
+### 肥皂膜实验
+
+对于给定的 $T,\ p$，
+
+$$
+\left. \left( \frac{\partial G}{\partial x} \right)_{T,p,n} \right|_{平衡} = 0
+$$
+
+$$
+G = \sum_i \mu_{i(\infty)} n_i + \sigma (2 l x)
+$$
+
+$$
+F_{重力} = \left( \frac{\partial G}{\partial x} \right)_{T,p,n} = 2 l \sigma + 2 l x \left( \frac{\partial \sigma}{\partial x} \right)_{T,p,n}
+$$
+
+若 $\left( \frac{\partial \sigma}{\partial x} \right)_{T,p,n} = 0$，得到：$\sigma = F_{张力}$
+
+实际上：
+
+$$
+F_{张力} = \sigma + x \left( \frac{\partial \sigma}{\partial x} \right)_{T,p,n}
+$$
+
+### 小液滴实验
+
+$$
+p_{内} - p_{外} = \frac{2 \sigma}{r} + \left( \frac{\partial \sigma}{\partial r} \right)_{T,p,n}
+$$
+
+### 毛细管现象
+
+$$
+h = \frac{2 \sigma_{气-液}}{\rho g r} \cos \theta \approx \frac{2 \sigma_{气-液}}{\rho g r}
+$$
+
+热力学第一定律：$dG \le dW$，可逆 $dG = dW$
+
+热力学第二定律：平衡条件 $\left( \frac{\partial G}{\partial h} \right)_{T,p,n} = 0$
+
+$$
+G = G_{体相} + G_{表面} + G_{重力} = [\sum_i \mu_{i(\infty)} n_i] + [(\sigma_{液-固} - \sigma_{气-固}) \int_{0}^{h} C_{管} dh] + [\int_{0}^{h} \rho g h A_{管} dh]
+$$
+
+#### 横截面为圆形
+
+$$
+C_{管} = 2 \pi r,\quad A_{管} = \pi r^2
+$$
+
+$$
+0 = \left( \frac{\partial G}{\partial h} \right)_{T,p,n} = 2 \pi r (\sigma_{液-固} - \sigma_{气-固}) + \rho g h (\pi r^2)
+$$
+
+$$
+h = \frac{2(\sigma_{气-固} - \sigma_{液-固})}{\rho g r}
+$$
+
+考虑三相界面，不需设气液界面为圆弧
+
+$$
+\sigma_{气-固} - \sigma_{液-固} = \sigma_{气-液} \cos \theta
+$$
+
+#### 横截面为正方形
+
+$$
+C_{管} = 4 L,\quad A_{管} = L^2
+$$
+
+$$
+0 = \left( \frac{\partial G}{\partial h} \right)_{T,p,n} = 4 L (\sigma_{液-固} - \sigma_{气-固}) + \rho g h L^2
+$$
+
+$$
+h = \frac{4(\sigma_{气-固} - \sigma_{液-固})}{\rho g L}
+$$
+
+## 表面吸附
+
+### 固体表面的等价位点吸附（等温吸附）
+
+$$
+\text{Site} + i_{自由} \underset{k_{吸}}{\overset{k_{脱}}{\rightleftharpoons}} (\text{Site}-i)_{吸附}
+$$
+
+平衡条件：
+
+$$
+v_{吸} = v_{脱}
+$$
+
+$$
+v_{吸} = k_{吸} N_{自由} c \quad v_{脱} = k_{脱} N_{吸附} \qquad N = N_{自由} + N_{吸附}
+$$
+
+$$
+\Rightarrow \frac{k_{吸}}{k_{脱}} = K = \frac{N_{吸附}}{N_{自由} c}
+$$
+
+定义表面覆盖度：
+
+$$
+\Gamma = \frac{N_{吸附}}{N}
+$$
+
+$$
+\Rightarrow K = \frac{\Gamma}{(1-\Gamma)c} \Rightarrow \Gamma = \frac{Kc}{1+Kc}
+$$
+
+### 复杂吸附
+
+#### 多层吸附
+
+#### 非等价位点
+
+#### BET 吸附
